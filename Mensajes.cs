@@ -198,5 +198,11 @@ namespace Generales
         {
             MessageBox.Show("Paciente Obitado", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        public static void msgErrorExcel()
+        {
+            MessageBox.Show("Error al iniciar excel. Verifique la instalación", "", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+        }
     }
 }
