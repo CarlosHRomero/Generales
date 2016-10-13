@@ -58,7 +58,6 @@ namespace Generales
             {
                 Mensajes.msgError(ex);
                 throw;
-                return false;
             }
         }
 
