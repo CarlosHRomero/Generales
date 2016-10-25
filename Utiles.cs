@@ -73,7 +73,7 @@ namespace Generales
             try
             {
                 DateTime Fecha = Convert.ToDateTime(p_Fecha);
-                Ret = "'" + Fecha.Day.ToString() + "-" + Fecha.Month.ToString() + "-" + Fecha.Year.ToString() + "'";
+                Ret = "'" + Fecha.Year.ToString() + "-" + Fecha.Month.ToString() + "-" + Fecha.Day.ToString() + "'";
             }
             catch
             {
