@@ -53,4 +53,14 @@ public enum Formularios
     _30Dias = 8
 }
 
+public enum TipoDeDatos
+{
+    ID = 1,
+    Texto = 2,
+    Tabla = 3,
+    Numero = 4,
+    Fecha = 5,
+    NoSi = 6
+}
+
 
