@@ -63,4 +63,11 @@ public enum TipoDeDatos
     NoSi = 6
 }
 
+public enum NoSi
+{
+    No = 2,
+    Si = 3
+}
+
+
 
