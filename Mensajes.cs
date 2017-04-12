@@ -204,5 +204,10 @@ namespace Generales
             MessageBox.Show("Error al iniciar excel. Verifique la instalación", "", MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
         }
+
+        public static DialogResult confirmarMigración(string nombre)
+        {
+            return (MessageBox.Show(string.Format("Se migrará el procedimiento de  {0} de estensa  \n Está Seguro ?", nombre), "Migrar procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation));
+        }
     }
 }

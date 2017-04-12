@@ -69,5 +69,13 @@ public enum NoSi
     Si = 3
 }
 
-
+public enum TipoCir
+{
+    MP=2,
+    AA=4,
+    FA=5,
+    CDI=5,
+    CDI_CRT=7,
+    TV_EV=8
+}
 

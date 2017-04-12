@@ -280,6 +280,42 @@ namespace Generales
             }
         }
 
+
+        public static void WriteErrorLogMigracionEstensta(string ErrMensaje)
+        {
+            StreamWriter strStreamWriter = null;
+            try
+            {
+
+                //string Archivo = HttpContext.Current.Server.MapPath("/") + clsCtrlApplication.LogErrorFile;
+                string Archivo = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MigracionEstensa.log";
+
+                //strStreamWriter = new StreamWriter(strStreamW, System.Text.Encoding.UTF8);                                 
+
+                //Se abre el archivo y si este no existe se crea               
+                if (File.Exists(Archivo))
+                    strStreamWriter = File.AppendText(Archivo);
+                else
+                    strStreamWriter = File.CreateText(Archivo);
+                string Linea = "< FECHA='" + DateTime.Now.ToString() + "' ERROR='" + ErrMensaje + "' />";
+                //Escribimos la línea en el achivo de texto
+                strStreamWriter.WriteLine(Linea);
+                strStreamWriter.Flush();
+            }
+            catch
+            {
+                MessageBox.Show("ERROR DE ESCRITURA EN DISCO (ErrorVerifExe.log): " + ErrMensaje);
+            }
+            finally
+            {
+                if (strStreamWriter != null)
+                {
+                    strStreamWriter.Close();
+                }
+            }
+        }
+
+
         public static string RecortarStr(string Texto, int LargoMax, int LargoTitulo)
         {
             string Ret = Texto;
