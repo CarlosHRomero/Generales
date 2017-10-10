@@ -85,6 +85,11 @@ namespace Generales
         {
              MessageBox.Show(strError + ": " +ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+        public static void msgError(string str)
+        {
+            MessageBox.Show(str, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
 
         public static void msgHoraInvalida()
         {
@@ -208,6 +213,11 @@ namespace Generales
         public static DialogResult confirmarMigración(string nombre)
         {
             return (MessageBox.Show(string.Format("Se migrará el procedimiento de  {0} de estensa  \n Está Seguro ?", nombre), "Migrar procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation));
+        }
+
+        public static void msgSeleccionarEvolución()
+        {
+            MessageBox.Show("Debe seleccionar el dia de evolución que quiere imprimir", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

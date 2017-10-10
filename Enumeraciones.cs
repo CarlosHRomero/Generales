@@ -1,9 +1,25 @@
-﻿public enum TipoAccion
+﻿public enum TipoInformeEvol
+{
+    Diaria =1,
+    Total =2
+}
+
+public enum TipoInforme
+{
+    Ingreso =1,
+    EvolucionDia =2,
+    EvolucionTotal=3,
+    Alta = 4
+}
+
+
+public enum TipoAccion
 {
     Alta = 1,
     Baja = 2,
     Modif = 3,
-    Ver = 4
+    Ver = 4,
+    AltaConDatos=5
 }
 
 public enum TipoError

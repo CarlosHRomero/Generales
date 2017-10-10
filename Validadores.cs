@@ -72,13 +72,27 @@ namespace Generales
         static public Boolean ValidaEntero16(object sender, EventArgs e)
         {
             Int16 x;
-            if (!String.IsNullOrEmpty(((TextBox)sender).Text) && !Int16.TryParse(((TextBox)sender).Text, out x))
+            if (sender is TextBox)
             {
-                Mensajes.msgValorInvalidoEntero();
-                ((TextBox)sender).Text = null;
-                ((Control)sender).Focus();
-                return false;
+                if (!String.IsNullOrEmpty(((TextBox)sender).Text) && !Int16.TryParse(((TextBox)sender).Text, out x))
+                {
+                    Mensajes.msgValorInvalidoEntero();
+                    ((TextBox)sender).Text = null;
+                    ((Control)sender).Focus();
+                    return false;
+                }
             }
+            if (sender is MaskedTextBox)
+            {
+                if (!String.IsNullOrEmpty(((MaskedTextBox)sender).Text) && !Int16.TryParse(((MaskedTextBox)sender).Text, out x))
+                {
+                    Mensajes.msgValorInvalidoEntero();
+                    ((MaskedTextBox)sender).Text = null;
+                    ((Control)sender).Focus();
+                    return false;
+                }
+            }
+
             return true;
         }
         static public bool ValidaFecha(object sender, EventArgs e)

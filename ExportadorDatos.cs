@@ -74,8 +74,11 @@ namespace Generales
                 {
                     columnIndex++;
                     excel.Cells[1, columnIndex] = column.HeaderText;
+                    excel.Columns[columnIndex].ColumnWidth = column.Width/7;
+                    var ran = excel.Columns[columnIndex];
+
                 }
-                int rowIndex = 0;
+                int rowIndex = 1;
                 foreach (DataGridViewRow row in dgv.Rows)
                 {
                     rowIndex++;
@@ -84,18 +87,34 @@ namespace Generales
                     {
                         //columnIndex++;
                         object obj = row.Cells[columnIndex].Value;
-
+                        DataGridViewCell cell = row.Cells[columnIndex];
+                        Microsoft.Office.Interop.Excel.Range range = excel.Cells[rowIndex + 1, columnIndex + 1];
+                        int c;
+                        if ((c = System.Drawing.ColorTranslator.ToOle(row.DefaultCellStyle.BackColor)) != 0)
+                        {
+                            range.Interior.Color = c;
+                            range.Font.Color = System.Drawing.ColorTranslator.ToOle(row.DefaultCellStyle.ForeColor);
+                        }
+                        if (row.DefaultCellStyle.Font != null)
+                        {
+                            if (row.DefaultCellStyle.Font.Bold)
+                            {
+                                range.Font.FontStyle = "Bold";
+                            }
+                        }
                         if (obj == null)
                         {
                             continue;
                         }
                         string dato = obj.ToString();
                         DateTime val;
-                        if (DateTime.TryParse(dato, out val) == true)
-                            dato = val.ToShortDateString();
-                        Microsoft.Office.Interop.Excel.Range range = excel.Cells[rowIndex + 1, columnIndex + 1];
+                        if (dato.Length >= 10 && DateTime.TryParse(dato, out val) == true)
+                            dato = val.ToString("yyyy/MM/dd");
                         range.Value = dato;
-                        range.HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlLeft;
+                        if (dgv.Columns[columnIndex].DefaultCellStyle.Alignment == DataGridViewContentAlignment.MiddleRight)
+                            range.Style.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                        else
+                            range.HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlLeft;
                         //excel.Cells[rowIndex + 1, ColumnIndex]
                     }
                 }
@@ -339,9 +358,29 @@ namespace Generales
                         //    throw new Exception();
                         DateTime val;
                         if (dato.Length >= 10 && DateTime.TryParse(dato, out val) == true)
-                            dato = val.ToString("yyyy/MM/dd");
-                        writer.WriteElement(new CellValue(dato));
+                        {
+                            string colname = dt.Columns[col].ColumnName;
+                            if (colname.Substring(colname.Length -2) == "_F")
+                                dato = val.ToString("yyyy/MM/dd");
+                            if (colname.Substring(colname.Length - 2) == "_H")
+                                dato = val.ToString("HH:mm");
+                        }
+                        char c = Convert.ToChar(0x1D);
+                       
+                        dato=dato.Replace(c, ' ');
+                        c = Convert.ToChar(0x1C);
+                        dato = dato.Replace(c, ' ');
+                        dato=dato.Replace('\r', ' ');
+                        dato=dato.Replace('\n', ' ');
 
+                        try
+                        {
+                            writer.WriteElement(new CellValue(dato));
+                        }
+                        catch(Exception ex)
+                        {
+                            continue;
+                        }
                         // write the end cell element
                         writer.WriteEndElement();
                     }

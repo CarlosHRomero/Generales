@@ -11,7 +11,7 @@ namespace Generales
         public static Boolean ConvertirABoolean(String s)
         {
             int x;
-            if(int.TryParse(s, out x))
+            if (int.TryParse(s, out x))
             {
                 if (Convert.ToBoolean(x))
                     return true;
@@ -31,12 +31,44 @@ namespace Generales
         {
             List<string> lista = new List<string>();
             string st, izq, der;
-            while(!string.IsNullOrEmpty(s))
+            while (!string.IsNullOrEmpty(s))
             {
                 s = DividirCadena(s, var, out izq, out der);
                 lista.Add(izq.Trim());
             }
             return lista;
+        }
+
+        public static string DividirCadena(string s, string var, out string izq)
+        {
+            string der;
+            return DividirCadena(s, var, out izq, out der);
+        }
+
+        public static string DividirCadenaDelimitada(string s, string LimiteIzquierdo, string LimiteDerecho)
+        {
+            try
+            {
+
+                if (s == null)
+                {
+                    return null;
+                }
+                int izq = s.IndexOf(LimiteIzquierdo);
+                if (izq < 0)
+                    return null;
+                string w_str = s.Substring(izq+ LimiteIzquierdo.Length);
+                int der = w_str.IndexOf(LimiteDerecho);
+                if(der < 0)
+                    return w_str;
+                return w_str.Substring(0, der);
+            }
+            catch (Exception ex)
+            {
+                Mensajes.msgError(s, ex);
+                return null;
+            }
+
         }
         public static String DividirCadena(String s, String var, out String Izq, out String Der)
         {
@@ -47,8 +79,8 @@ namespace Generales
         {
             try
             {
-                
-                if(s == null)
+
+                if (s == null)
                 {
                     Izq = null; Der = null; return null;
                 }
@@ -57,9 +89,9 @@ namespace Generales
                 if (i > -1)
                 {
                     Izq = s.Substring(0, i);
-                    
+
                     if (i < s.Length)
-                        Der = s.Substring(i + l );
+                        Der = s.Substring(i + l);
                     else
                         Der = null;
                 }
@@ -68,13 +100,13 @@ namespace Generales
                     Izq = s;
                     Der = null;
                 }
-                    if (!opc)
-                        return Izq;
-                    else
-                        return Der;
-                
+                if (!opc)
+                    return Izq;
+                else
+                    return Der;
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Mensajes.msgError(s, ex);
                 Der = null; Izq = null;
@@ -138,9 +170,50 @@ namespace Generales
 
         public static string ReemplazarComodines(string s)
         {
-            // Reemplaza * rpo porcentaje
+            // Reemplaza * por porcentaje
             return s.Replace("*", "%");
         }
 
+        public static string FormatearCadenaInformes(string s)
+        {
+            string w_s =s;
+            w_s =EliminarEspaciosComienzoLinea(w_s);
+            w_s = EliminarPuntuacionComienzoLinea(w_s);
+            return w_s;
+        }
+        public static string EliminarEspaciosComienzoLinea(string s)
+        {
+            string w_str = s;
+            while (w_str.Contains("\r\n "))
+                w_str=w_str.Replace("\r\n ", "\r\n");
+            while (w_str.Contains("\n "))
+                w_str=w_str.Replace("\n ", "\n");
+
+            return w_str.Trim();
+        }
+
+        public static string EliminarPuntuacionComienzoLinea(string s)
+        {
+            string w_str = s;
+            while (w_str[0] == ',' || w_str[0] == '.' || w_str[0]== ' ')
+                w_str = w_str.Substring(1);
+
+            while (w_str.Contains("\r\n,"))
+                w_str = w_str.Replace("\r\n,", "\r\n");
+            while (w_str.Contains("\n,"))
+                w_str = w_str.Replace("\n,", "\n");
+            return w_str.Trim(); 
+
+        }
+
+
+        public static string EliminarSaltosLinea(string w_str)
+        {
+            while (w_str.Contains("\r\n,"))
+                w_str = w_str.Replace("\r\n", "");
+            while (w_str.Contains("\n,"))
+                w_str = w_str.Replace("\n", "");
+            return w_str;
+        }
     }
 }

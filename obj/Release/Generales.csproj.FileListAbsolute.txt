@@ -1,0 +1,7 @@
+C:\Users\chromero\Source\desa1\Generales\bin\Release\Generales.dll
+C:\Users\chromero\Source\desa1\Generales\bin\Release\Generales.pdb
+C:\Users\chromero\Source\desa1\Generales\bin\Release\DocumentFormat.OpenXml.dll
+C:\Users\chromero\Source\desa1\Generales\bin\Release\Newtonsoft.Json.dll
+C:\Users\chromero\Source\desa1\Generales\obj\Release\Generales.csprojResolveAssemblyReference.cache
+C:\Users\chromero\Source\desa1\Generales\obj\Release\Generales.dll
+C:\Users\chromero\Source\desa1\Generales\obj\Release\Generales.pdb

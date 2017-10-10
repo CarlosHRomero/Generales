@@ -82,6 +82,20 @@ namespace Generales
             return Ret;
         }
 
+        public static string ConverToSqlDate(DateTime Fecha)
+        {
+            string Ret;
+            try
+            {                
+                Ret = "'" + Fecha.Year.ToString() + "-" + Fecha.Month.ToString() + "-" + Fecha.Day.ToString() + "'";
+            }
+            catch
+            {
+                Ret = "null";
+            }
+            return Ret;
+        }
+
         public static string ConvertToSqlString(string value)
         {
             string ret;
