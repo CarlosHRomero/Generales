@@ -89,7 +89,10 @@ namespace Generales
         {
             MessageBox.Show(str, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
+        public static void msgError(string rutina, string error)
+        {
+            MessageBox.Show(error, rutina, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         public static void msgHoraInvalida()
         {
