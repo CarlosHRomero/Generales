@@ -124,7 +124,7 @@ namespace Generales
             }
             catch (Exception ex)
             {
-                Utiles.WriteErrorLog(ex.Message);
+                Utiles.WriteErrorLogLocal(ex.Message);
                 Mensajes.msgErrorExcel();
                 return false;
             }
@@ -203,7 +203,7 @@ namespace Generales
             }
             catch (Exception ex)
             {
-                Utiles.WriteErrorLog(ex.Message);
+                Utiles.WriteErrorLogLocal(ex.Message);
                 return false;
             }
         }
@@ -284,7 +284,7 @@ namespace Generales
             }
             catch (Exception ex)
             {
-                Utiles.WriteErrorLog(ex.Message);
+                Utiles.WriteErrorLogLocal(ex.Message);
                 return false;
             }
         }

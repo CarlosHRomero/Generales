@@ -9,6 +9,7 @@ using System.Xml;
 using System.Net;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace Generales
 {
@@ -260,7 +261,8 @@ namespace Generales
         /// Escribe en el Archivo de Log
         /// </summary>
         /// <param name="Mensaje"></param>
-        public static void WriteErrorLog(string ErrMensaje)
+        
+        public static void WriteErrorLogLocal(string ErrMensaje)
         {
             StreamWriter strStreamWriter = null;
             try
@@ -291,6 +293,28 @@ namespace Generales
                 {
                     strStreamWriter.Close();
                 }
+            }
+        }
+        public static void WriteErrorLog(string ErrMensaje, string Archivo = null)
+        {
+            StreamWriter streamWriter = (StreamWriter)null;
+            try
+            {
+                if (Archivo == null)
+                    Archivo = ConfigurationManager.AppSettings["logfile"];
+                if (Archivo == null)
+                    Archivo = "C:\\inetpub\\wwwroot\\cirugiacardiaca\\CirugiaCardiaca.log";
+                streamWriter = !File.Exists(Archivo) ? File.CreateText(Archivo) : File.AppendText(Archivo);
+                string str = "< FECHA='" + DateTime.Now.ToString() + "' ERROR='" + ErrMensaje + "' />";
+                streamWriter.WriteLine(str);
+                streamWriter.Flush();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                streamWriter?.Close();
             }
         }
 
