@@ -10,7 +10,7 @@ C:\Users\CHROMERO\source\repos\Generales\bin\Debug\Generales.pdb
 C:\Users\CHROMERO\source\repos\Generales\bin\Debug\DocumentFormat.OpenXml.dll
 C:\Users\CHROMERO\source\repos\Generales\bin\Debug\Newtonsoft.Json.dll
 C:\Users\CHROMERO\source\repos\Generales\obj\Debug\Generales.csproj.CoreCompileInputs.cache
-C:\Users\CHROMERO\source\repos\Generales\obj\Debug\Generales.csproj.CopyComplete
 C:\Users\CHROMERO\source\repos\Generales\obj\Debug\Generales.dll
 C:\Users\CHROMERO\source\repos\Generales\obj\Debug\Generales.pdb
 C:\Users\CHROMERO\source\repos\Generales\obj\Debug\Generales.csproj.AssemblyReference.cache
+C:\Users\CHROMERO\source\repos\Generales\obj\Debug\Generales.csproj.Up2Date
