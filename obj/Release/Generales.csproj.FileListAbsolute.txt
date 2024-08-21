@@ -5,3 +5,12 @@ C:\Users\chromero\Source\desa1\Generales\bin\Release\Newtonsoft.Json.dll
 C:\Users\chromero\Source\desa1\Generales\obj\Release\Generales.csprojResolveAssemblyReference.cache
 C:\Users\chromero\Source\desa1\Generales\obj\Release\Generales.dll
 C:\Users\chromero\Source\desa1\Generales\obj\Release\Generales.pdb
+C:\Users\CHROMERO\source\repos\Generales\bin\Release\Generales.dll
+C:\Users\CHROMERO\source\repos\Generales\bin\Release\Generales.pdb
+C:\Users\CHROMERO\source\repos\Generales\bin\Release\DocumentFormat.OpenXml.dll
+C:\Users\CHROMERO\source\repos\Generales\bin\Release\Newtonsoft.Json.dll
+C:\Users\CHROMERO\source\repos\Generales\obj\Release\Generales.csproj.AssemblyReference.cache
+C:\Users\CHROMERO\source\repos\Generales\obj\Release\Generales.csproj.CoreCompileInputs.cache
+C:\Users\CHROMERO\source\repos\Generales\obj\Release\Generales.csproj.Up2Date
+C:\Users\CHROMERO\source\repos\Generales\obj\Release\Generales.dll
+C:\Users\CHROMERO\source\repos\Generales\obj\Release\Generales.pdb
